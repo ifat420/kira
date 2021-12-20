@@ -1,1 +1,68 @@
-<h1> Header </h1>
+{{ 'header.scss.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+    assign totalnav = linklists.main-menu.links.size 
+    assign halfnav =  totalnav | divided_by: 2 
+    assign isOdd = halfnav | modulo: 2
+
+    if isOdd > 0
+        assign halfnav = halfnav | plus: 1 
+    endif 
+%}
+
+<header>
+    <nav class="page-width nav">
+        <ul class="nav-list">
+            {% assign menu = linklists[section.settings.main_menu].links %}
+            {% for link in menu %} 
+                {% if forloop.index <= halfnav %}
+                    <li class="nav-list-item {%- if forloop.index == 1 -%} ml-0 {%- endif -%}"> 
+                        <a class="nav-list-link" href="{{ link.url }}"> {{ link.title }} </a> 
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+            
+        <div class="logobox">   
+            {% if section.settings.logo %}
+                <img class="logo-image" src="{{ section.settings.logo | image_url: 'master' }}" alt="logobox">
+            {% else %}
+                <img class="logo-image" src="{{ 'logo-black.png' | asset_img_url: 'master' }}" alt="logo-black">
+                
+            {% endif %}
+            
+        </div>
+
+        <ul class="nav-list nav-list-lft">
+            {% for link in menu %} 
+                {% if forloop.index > halfnav %}
+                    <li class="nav-list-item"> 
+                        <a class="nav-list-link" href="{{ link.url }}"> {{ link.title }} </a> 
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            <li><a class="cart-counter" href="/cart"> Cart(0) </a></li>
+
+        </ul>  
+    </nav>
+</header>
+
+{% schema %}
+{
+    "name": "Header",
+    "settings": [
+        {
+            "type": "link_list",
+            "id": "main_menu",
+            "label": "Main Menu",
+            "default": "main-menu"
+        },
+        {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo"
+        }
+    ]
+}
+{% endschema %}
