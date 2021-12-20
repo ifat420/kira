@@ -1,0 +1,44 @@
+<div>
+    <h1> Cart </h1>
+
+    <form action="{{ routes.cart_url }}" method="post" id="cart">
+        <div class="cart-itme">
+            {% if cart != empty %}
+                <table class="cart-items">
+                    <thead>
+                        <tr>
+                            <th colspan="2" scope="col">Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart.items %}
+                            <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
+                                <td class="cart-itme__media">
+                                    {% if item.image %}
+                                        <a href="{{ item.url }}"></a>
+                                        <img class="cart-item__image"
+                                            src="{{ item.image | img_url: '300x' }}"
+                                            alt="{{ item.image.alt | escape }}"
+                                            loading="lazy"
+                                            width="150"
+                                            height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
+                                        >
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {{ product.title }}
+                                </td>
+                                <td>
+                                    {{ product.price }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </form>
+</div>

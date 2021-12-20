@@ -1,0 +1,27 @@
+{% comment %}
+    Render a article Blog
+
+    Accepts:
+        - article object
+{% endcomment %}
+
+<article>
+    {% if article.image %} 
+        <img src="{{ article.image | img_url: 'master' }}" width="{{ article.image.width }}" height="{{ article.image.width }}" loading="lazy" alt="{{ article.image.alt }}">
+    {% endif %}
+    <h2> {{ article.title }} </h2>
+    <p> {{ article.published_at | time_tag: format: 'date' }} </p>
+    {% if article.excerpt.size > 0 or article.content.size > 0 %}
+        {% if article.excerpt.size > 0 %}
+            {{ article.excerpt | strip_html | truncatewords: 30 }}
+        {% else %}
+            {{ article.content | strip_html | truncatewords: 30 }}
+        {% endif %}
+    {% endif %}
+
+    <div class="article-card__footer">
+        {%- if article.comments_count > 0 and blog.comments_enabled? -%}
+          <span>{{ 'blogs.article.comments' | t: count: article.comments_count }}</span>
+        {%- endif -%}
+    </div>
+</article>

@@ -1,0 +1,43 @@
+
+
+<div id="ProductGridContainer">
+    {% paginate collection.products by section.settings.products_per_page %}
+
+        {%- if collection.products.size == 0 -%}
+            <div>
+                <div class="empty-product" id="product-grid" data-id="{{ section.id }}">
+                    <h1> No product Found </h1>
+                </div>
+            </div>
+        {%- else -%}
+            <div class="collections" id="product-grid" data-id="{{ section.id }}">
+                <div class="collections-product-list" >
+                    {% for product in collection.products %}
+                        {% render 'product-card', product: product %}
+                    {% endfor %}
+                </div>   
+
+                {%- if paginate.pages > 1 -%}
+                    {% render 'pagination', paginate: paginate, anchor: '' %}
+                {%- endif -%}
+            </div>
+        {%- endif -%}
+    {% endpaginate %}
+</div>
+
+{% schema %}
+{
+    "name": "Product List",
+    "settings": [
+        {
+            "type": "range",
+            "id": "products_per_page",
+            "min": 8,
+            "max": 24,
+            "step": 4,
+            "default": 16,
+            "label": "Product perpage"
+        },
+    ]
+}
+{% endschema %}

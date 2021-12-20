@@ -1,0 +1,27 @@
+
+<div class="page-width">
+    <h1 class="main-page-title page-title h0">
+      {{ page.title | escape }}
+    </h1>
+    <div class="rte">
+      {{ page.content }}
+    </div>
+</div>
+
+
+
+  
+{% schema %}
+  {
+    "name": "Main Page",
+    "settings": [
+
+        {
+           "type":"text",
+           "id":"text" 
+        }
+    
+    ]
+    
+  }
+{% endschema %}

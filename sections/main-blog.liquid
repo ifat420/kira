@@ -1,0 +1,12 @@
+{% paginate blog.articles by 6 %}
+    <div class="article-list">
+        {% for article in blog.articles %}
+            {% render 'article-card', article: article %}
+        {% endfor %}
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+        {%- render 'pagination', paginate: paginate -%}
+    {%- endif -%}
+
+{% endpaginate %}
