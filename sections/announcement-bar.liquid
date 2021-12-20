@@ -1,21 +1,21 @@
 {{ 'announcement.scss.css' | asset_url | stylesheet_tag }}
 
 <div class="acb">
-    <div class="acb-content">
-        <h2 class="acb-text"> {{ seciton.settings.announcement_text }} </h2>
-    </div>
+  <div class="acb-content">
+    <h2 class="acb-text"> {{ section.settings.announcement_text }} </h2>
+  </div>
 </div>
 
 {% schema %}
 {
-    "name": "Announcement Bar",
-    "settings": [
-        {
-            "type": "text",
-            "id": "announcement_text",
-            "label": "Announcement Text",
-            "default": "FREE SHIPPING ON ORDERS OVER $70",
-        }
-    ]
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement Text",
+      "default": "FREE SHIPPING ON ORDERS OVER $70"
+    }
+  ]
 }
 {% endschema %}

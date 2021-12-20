@@ -7,7 +7,7 @@
 
 <article>
     {% if article.image %} 
-        <img src="{{ article.image | img_url: 'master' }}" width="{{ article.image.width }}" height="{{ article.image.width }}" loading="lazy" alt="{{ article.image.alt }}">
+        <img src="{{ article.image | image_url: 'master' }}" width="{{ article.image.width }}" height="{{ article.image.width }}" loading="lazy" alt="{{ article.image.alt }}">
     {% endif %}
     <h2> {{ article.title }} </h2>
     <p> {{ article.published_at | time_tag: format: 'date' }} </p>

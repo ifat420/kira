@@ -3,7 +3,7 @@
       "banner": {
         "type": "main-collection-banner"
       },
-      "product-grid": {
+      "product-list": {
         "type": "main-collection-product-list"
       }
     },

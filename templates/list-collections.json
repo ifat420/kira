@@ -1,10 +1,9 @@
 {
   "sections": {
     "main": {
-      "type": "main-product"
+      "type": "main-list-collections"
     }
   },
-
   "order": [
     "main"
   ]
