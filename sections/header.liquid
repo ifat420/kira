@@ -24,13 +24,13 @@
         </ul>
             
         <div class="logobox">   
-            {% if section.settings.logo %}
-                <img class="logo-image" src="{{ section.settings.logo | image_url: 'master' }}" alt="logobox">
-            {% else %}
-                <img class="logo-image" src="{{ 'logo-black.png' | asset_img_url: 'master' }}" alt="logo-black">
-                
-            {% endif %}
-            
+            <a href="/">
+                {% if section.settings.logo %}
+                    <img class="logo-image" src="{{ section.settings.logo | image_url: 'master' }}" alt="logobox">
+                {% else %}
+                    <img class="logo-image" src="{{ 'logo-black.png' | asset_img_url: 'master' }}" alt="logo-black">
+                {% endif %}
+            </a>            
         </div>
 
         <ul class="nav-list nav-list-lft">

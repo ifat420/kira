@@ -1,0 +1,55 @@
+{% comment %}
+Render a Image as background
+
+Accepts:
+- className
+- imageUrl
+- isAsset
+- title,
+- parent
+- slot
+{% endcomment %}
+
+
+{%- assign widthBreak = '180,360,540,720,900,1080,1296,1512,1728,1944,2160,2376,2808,3024' | split: ',' -%}
+
+
+<div class="{{ className }} lazyload" title="{{ title | default: 'title'  }}" 
+    {% if isAsset %} data-bgset="
+        {% for width in widthBreak %}
+            {% capture srcUrl %}
+                {{ imageUrl | asset_img_url: '1x1' }} {{ width }}w {{ width }}h
+            {% endcapture %}
+
+            {% assign requestedSize = width | append: 'x' %} {{  srcUrl | replace: '1x1', requestedSize }}
+            {% if forloop.last != true %},{% endif %}
+        {% endfor %}" {% else %} data-bgset="
+        {% for width in widthBreak %}
+            {% capture srcUrl %}
+                {{ imageUrl | img_url: '1x1' }} {{ width }}w {{ width }}h
+            {% endcapture %}
+
+            {% assign requestedSize = width | append: 'x' %} {{  srcUrl | replace: '1x1', requestedSize }}
+            {% if forloop.last != true %},{% endif %}
+        {% endfor %}" 
+    {% endif %} data-parent-fit="{{ parent | default: ''}}" data-aspectratio="1">
+
+    {{ slot }}
+</div>
+
+
+
+<noscript>
+    <div 
+        class="{{ className }} lazyload" 
+        title="{{ title | default: ''  }}" 
+        
+        {% if isAsset %}  
+            style="background-image:url( {{ imageUrl | asset_img_url: '1024x' }})"
+        {% else %} 
+            style="background-image:url( {{ imageUrl | img_url: '1024x' }})"
+        {% endif %}>
+
+    {{ slot }}
+</div>
+</noscript>

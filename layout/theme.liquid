@@ -56,10 +56,16 @@
 
         --page-width: 120rem;
 
+        --image-size: cover;
+        --image-aspect-ratio: 130.0%;
+        --image-aspect-ratio-half: 65.0%;
+
       }
     </style>
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'lazy-bgset.js' | asset_url | script_tag }}
+    {{ 'lazy.js' | asset_url | script_tag }}
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     if (Shopify.designMode) {
