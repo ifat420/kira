@@ -3,7 +3,7 @@
 {%- liquid
     assign totalnav = linklists.main-menu.links.size 
     assign halfnav =  totalnav | divided_by: 2 
-    assign isOdd = halfnav | modulo: 2
+    assign isOdd = totalnav | modulo: 2
 
     if isOdd > 0
         assign halfnav = halfnav | plus: 1 

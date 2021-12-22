@@ -4,11 +4,7 @@
     <div class="hero">
         <div class="hero-image-wpr">
             {% assign image = 'hero-image.jpg' | asset_img_url: 'master' %}
-<!--             
-            <div class="hero-image lazyload" aria-label="Blueberry Coconut" title="Blueberry Coconut" data-bgset="{{ image }}" data-parent-fit="cover" data-aspectratio="1.0"> </div> -->
-
             {% render 'image-as-background', isAsset: true, imageUrl: 'hero-image.jpg', className: 'hero-image' %}
-
         </div>
     </div>
 </section>

@@ -1,0 +1,38 @@
+.collection-hero {
+    position: relative;
+    height: 600px;
+    
+    @media (max-width: 1024px) {
+        height: 400px;
+    } 
+}
+
+.collection-hero-image {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-size: cover;
+}
+
+.collection-info {
+    position: absolute;
+    z-index: 9;
+    max-width: 960px;
+    padding: 6rem 8rem;
+    bottom: 0;
+}
+
+.collection-info .title {
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+}
+
+.collection-desc {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-white);
+    font-family: var(--font-nunitosans);
+    font-weight: 300;
+}
