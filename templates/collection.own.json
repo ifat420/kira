@@ -4,7 +4,7 @@
         "type": "main-collection-banner"
       },
       "product-list": {
-        "type": "main-collection-product-list"
+        "type": "main-collection-product-list-own"
       }
     },
     "order": [
