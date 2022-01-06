@@ -1,7 +1,11 @@
 
 <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
 
-{% render 'collection-filter', results: collection, enable_filtering: true, enable_sorting: true, collapse_on_larger_devices: true  %}
+<div class="page-width" id="main-collection-filters" data-id="{{ section.id }}">
+    {% render 'collection-filter', results: collection, enable_filtering: true, enable_sorting: true, collapse_on_larger_devices: true  %}
+</div>
+
+
 
 
 <div id="ProductGridContainer">

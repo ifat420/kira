@@ -1,3 +1,29 @@
-<div>
-    <h1> {{ product.title }} </h1>
+{% comment %}
+    Renders a product card
+
+    Accepts:
+    - product: {Object} Product Liquid object (required)
+
+    Usage:
+    {% render 'product-card', product: product %}
+{% endcomment %}
+
+<div class="pcard"> 
+    <div class="pcard__imgwpr">
+        {% render 'image-as-background', imageUrl:  product.featured_image, className: 'pcard-image pcard-image-primary' %}
+
+         <a class="pcard__url" href="{{ product.url }}"></a>
+
+        {%- comment -%}
+            {% if product.media[1] %}
+                {% render 'image-as-background', imageUrl:  product.featured_image, className: 'pcard-image pcard-image-seconary' %}
+            {% endif %}
+        {%- endcomment -%}
+    </div>
+    <div class="pcard__info text-center">
+        <a class="pcard__info-url" href="{{ product.url }}">
+            <h4 class="title-tertiary"> {{ product.title | escape }} </h4>
+        </a>
+        {% render 'price', product: product %}
+    </div>
 </div>

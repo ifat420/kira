@@ -14,6 +14,7 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   static setListeners() {
+    console.log("🚀 ~ file: facets.js ~ line 17 ~ FacetFiltersForm ~ setListeners ~ setListeners")
     const onHistoryChange = (event) => {
       const searchParams = event.state ? event.state.searchParams : FacetFiltersForm.searchParamsInitial;
       if (searchParams === FacetFiltersForm.searchParamsPrev) return;
@@ -23,6 +24,7 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   static toggleActiveFacets(disable = true) {
+    
     document.querySelectorAll('.js-facet-remove').forEach((element) => {
       element.classList.toggle('disabled', disable);
     });
@@ -30,11 +32,11 @@ class FacetFiltersForm extends HTMLElement {
 
   static renderPage(searchParams, event, updateURLHash = true) {
     FacetFiltersForm.searchParamsPrev = searchParams;
-    const sections = FacetFiltersForm.getSections();
+       const sections = FacetFiltersForm.getSections();
     const countContainer = document.getElementById('ProductCount');
     const countContainerDesktop = document.getElementById('ProductCountDesktop');
     document.getElementById('ProductGridContainer').querySelector('.collection').classList.add('loading');
-
+ 
     if (countContainer){
       countContainer.classList.add('loading');
     }
@@ -44,7 +46,11 @@ class FacetFiltersForm extends HTMLElement {
 
     sections.forEach((section) => {
       const url = `${window.location.pathname}?section_id=${section.section}&${searchParams}`;
+    
       const filterDataUrl = element => element.url === url;
+
+      console.log("🚀 ~ file: facets.js ~ line 50 ~ FacetFiltersForm ~ sections.forEach ~ filterDataUrl", filterDataUrl)
+      
 
       FacetFiltersForm.filterData.some(filterDataUrl) ?
         FacetFiltersForm.renderSectionFromCache(filterDataUrl, event) :
@@ -55,6 +61,7 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   static renderSectionFromFetch(url, event) {
+
     fetch(url)
       .then(response => response.text())
       .then((responseText) => {
@@ -144,6 +151,7 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   static updateURLHash(searchParams) {
+    console.log("🚀 ~ file: facets.js ~ line 153 ~ FacetFiltersForm ~ updateURLHash ~ searchParams", searchParams)
     history.pushState({ searchParams }, '', `${window.location.pathname}${searchParams && '?'.concat(searchParams)}`);
   }
 
@@ -156,16 +164,21 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   onSubmitHandler(event) {
+    console.log("🚀 ~ file: facets.js ~ line 166 ~ FacetFiltersForm ~ onSubmitHandler ~ onSubmitHandler")
     event.preventDefault();
     const formData = new FormData(event.target.closest('form'));
+    console.log("🚀 ~ file: facets.js ~ line 170 ~ FacetFiltersForm ~ onSubmitHandler ~ formData", formData)
     const searchParams = new URLSearchParams(formData).toString();
+    console.log("🚀 ~ file: facets.js ~ line 172 ~ FacetFiltersForm ~ onSubmitHandler ~ searchParams", searchParams)
     FacetFiltersForm.renderPage(searchParams, event);
   }
-
+  
   onActiveFilterClick(event) {
+    console.log("🚀 ~ file: facets.js ~ line 174 ~ FacetFiltersForm ~ onActiveFilterClick ~ onActiveFilterClick")
     event.preventDefault();
     FacetFiltersForm.toggleActiveFacets();
     const url = event.currentTarget.href.indexOf('?') == -1 ? '' : event.currentTarget.href.slice(event.currentTarget.href.indexOf('?') + 1);
+   
     FacetFiltersForm.renderPage(url);
   }
 }

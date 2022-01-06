@@ -1,36 +1,47 @@
 
-<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'collection-filter.js' | asset_url }}" defer="defer"></script>
 
-{% render 'collection-filter-own', results: collection, enable_filtering: true, enable_sorting: true, collapse_on_larger_devices: true  %}
+{{ 'component-product-list.scss.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-filter-own.scss.css' | asset_url | stylesheet_tag }}
+{{ 'component-product-card.scss.css' | asset_url | stylesheet_tag }}
 
 
-<div id="ProductGridContainer">
+<div class="page-width">
 
-
-    {% paginate collection.products by section.settings.products_per_page %}
-
-        {%- if collection.products.size == 0 -%}
-            <div class="collection">
-                <div>
-                    <div class="empty-product" id="product-grid" data-id="{{ section.id }}">
-                        <h1> No product Found </h1>
+    <div class="collection-content">
+        <div id="main-collection-filters" data-id="{{ section.id }}">
+            {% render 'collection-filter-own', results: collection, enable_filtering: true, enable_sorting: true, collapse_on_larger_devices: true  %}
+        </div>
+        <div id="ProductGridContainer">
+            {% paginate collection.products by section.settings.products_per_page %}
+        
+                {%- if collection.products.size == 0 -%}
+                    <div class="collection">
+                        <div>
+                            <div class="empty-product" id="product-grid" data-id="{{ section.id }}">
+                                <h1> No product Found </h1>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        {%- else -%}
-            <div class="collection" id="product-grid" data-id="{{ section.id }}">
-                <div class="collection-product-list" >
-                    {% for product in collection.products %}
-                        {% render 'product-card', product: product %}
-                    {% endfor %}
-                </div>   
-
-                {%- if paginate.pages > 1 -%}
-                    {% render 'pagination', paginate: paginate, anchor: '' %}
+                {%- else -%}
+                    <div class="collection" id="product-grid" data-id="{{ section.id }}">
+                        <div class="collection-product-list" >
+                            {% for product in collection.products %}
+                                {% render 'product-card', product: product %}
+                            {% endfor %}
+                        </div>
+        
+                        {%- if paginate.pages > 1 -%}
+                            {% render 'pagination', paginate: paginate, anchor: '' %}
+                        {%- endif -%}
+                    </div>
                 {%- endif -%}
-            </div>
-        {%- endif -%}
-    {% endpaginate %}
+            {% endpaginate %}
+        </div>
+    </div>
+
+
 </div>
 
 {% schema %}

@@ -10,4 +10,51 @@
     endif
 %}
 
-<h2> This is colleciton Filter </h2>
+<div class="coll-filter">
+    <collection-filter-form>
+        <form id="FacetFiltersForm" class="facets__form">
+            {%- if results.terms -%}
+                <input type="hidden" name="q" value="{{ results.terms | escape }}">
+                <input name="options[prefix]" type="hidden" value="last">
+            {%- endif -%}
+    
+            {% for filter in results.filters %}
+                {%- assign total_active_values = total_active_values | plus: filter.active_values.size -%}
+    
+                {% case filter.type %}
+                    {% when 'list' %}
+                        <div id="Details-{{ forloop.index }}-{{ section.id }}">
+                             <button type="button" class="collection-filter-btn" data-flist="Facet-{{ forloop.index }}-{{ section.id }}">
+                                <span>{{ filter.label | escape }}</span>
+                                {% render 'icon-caret' %}
+                            </button>
+                            
+                            <div id="Facet-{{ forloop.index }}-{{ section.id }}" aria-expanded="false" class="collection-filter-container">
+                                <ul class="facets__list" role="list">
+                                    {% for value in filter.values %}
+                                        <li class="facets__list-item"> 
+                                            <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}">
+                                                <input type="checkbox"
+                                                  name="{{ value.param_name }}"
+                                                  value="{{ value.value }}"
+                                                  id="Filter-{{ filter.label | escape }}-{{ forloop.index }}"
+                                                  {% if value.active %}checked{% endif %}
+                                                  {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                                                >
+                                                {{ value.label | escape }} ({{ value.count }})
+
+                                                <span class="facet-checkbox-mark"> </span>
+                                              </label> 
+
+                                        </li>
+                                    {% endfor %}    
+                                </ul>
+                            </div>
+                        </div>
+    
+                {% endcase %}
+    
+            {% endfor %}
+        </form>
+    </collection-filter-form>
+</div>

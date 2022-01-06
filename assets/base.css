@@ -38,6 +38,9 @@ html {
     padding: 0 2.5rem;
 }
 
+.text-center {
+    text-align: center;
+}
 
 /* -------------------------------------------------------------------------- */
 /*                                   headings                                 */
@@ -47,5 +50,43 @@ html {
     font-family: var(--font-montserrat);
     font-weight: 400;
     font-size: 4rem;
-    
+}
+
+.title-secondary {
+
+}
+
+.title-tertiary {
+    font-family: var(--font-montserrat);
+    font-weight: 400;
+    font-size: 1.6rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               common classes                               */
+/* -------------------------------------------------------------------------- */
+
+.text-center {
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+  
+.visually-hidden {
+    position: absolute !important;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    word-wrap: normal !important;
+}
+
+.visually-hidden--inline {
+    margin: 0;
+    height: 1em;
 }
