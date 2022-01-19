@@ -187,9 +187,9 @@ body.allow-image-animations .lazyloading:after {
   left               : 0;
   right              : 0;
   bottom             : 0;
-  background-color   : #aba9a9;
+  background-color   : #fff;
   background-image   : var(--icon-loader);
-  background-size    : 64px auto;
+  background-size    : 100px auto;
   background-repeat  : no-repeat;
   background-position: 50%;
   opacity            : 0.65;
