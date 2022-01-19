@@ -1,45 +1,52 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin : 0;
+  padding: 0;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
 }
 
 ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding   : 0;
+  margin    : 0;
 }
 
 a {
-    text-decoration: none;
-    font-size: 16px;
-    color: var(--color-black);
-    font-family: var(--font-montserrat);
+  text-decoration: none;
+  font-size      : 16px;
+  color          : var(--color-black);
+  font-family    : var(--font-montserrat);
 }
 
 html {
-    box-sizing: border-box;
-    font-size: 62.5%; 
+  box-sizing: border-box;
+  font-size : 62.5%;
 }
 
 .page-width {
-    max-width: var(--page-width);
-    margin: auto;
-    padding: 0 2.5rem;
+  max-width: var(--page-width);
+  margin   : auto;
+  padding  : 0 2.5rem;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -47,19 +54,193 @@ html {
 /* -------------------------------------------------------------------------- */
 
 .title {
-    font-family: var(--font-montserrat);
-    font-weight: 400;
-    font-size: 4rem;
+  font-family: var(--font-montserrat);
+  font-weight: 400;
+  font-size  : 4rem;
 }
 
-.title-secondary {
-
-}
+.title-secondary {}
 
 .title-tertiary {
-    font-family: var(--font-montserrat);
-    font-weight: 400;
-    font-size: 1.6rem;
+  font-family: var(--font-montserrat);
+  font-weight: 400;
+  font-size  : 1.6rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              webkit animations                             */
+/* -------------------------------------------------------------------------- */
+@-webkit-keyframes moPopUp {
+  0% {
+    opacity  : 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity  : 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moPopUp {
+  0% {
+    opacity  : 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity  : 1;
+    transform: translate(0);
+  }
+}
+
+@-webkit-keyframes moFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes moFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes moFadeInUp {
+  0% {
+    opacity  : 0;
+    transform: translateY(20px) scale(0.9);
+  }
+
+  to {
+    opacity  : 1;
+    transform: translate(0) scale(1);
+  }
+}
+
+@keyframes moFadeInUp {
+  0% {
+    opacity  : 0;
+    transform: translateY(20px) scale(0.9);
+  }
+
+  to {
+    opacity  : 1;
+    transform: translate(0) scale(1);
+  }
+}
+
+@-webkit-keyframes moZoomOut {
+  0% {
+    transform: scale(1.15);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes moZoomOut {
+  0% {
+    transform: scale(1.15);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.animated {
+  -webkit-animation-duration : 1s;
+  animation-duration         : 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode        : both;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                             lazy load animation                            */
+/* -------------------------------------------------------------------------- */
+
+body.allow-image-animations .lazyload.slide-background:after,
+body.allow-image-animations .lazyloading.slide-background:after {
+  background-color: #aba9a9;
+}
+
+body.allow-image-animations .lazyload.logo__image:after,
+body.allow-image-animations .lazyloading.logo__image:after {
+  background-color: transparent;
+}
+
+body.allow-image-animations .lazyload:after,
+body.allow-image-animations .lazyloading:after {
+  content            : "";
+  position           : absolute;
+  top                : 0;
+  left               : 0;
+  right              : 0;
+  bottom             : 0;
+  background-color   : #aba9a9;
+  background-image   : var(--icon-loader);
+  background-size    : 64px auto;
+  background-repeat  : no-repeat;
+  background-position: 50%;
+  opacity            : 0.65;
+  pointer-events     : none;
+}
+
+body.allow-image-animations .lazyloaded {
+  -webkit-animation: moFadeIn 0.65s ease;
+  animation        : moFadeIn 0.65s ease;
+}
+
+body.allow-image-animations .lazyloaded:after {
+  opacity: 0;
+}
+
+body.allow-image-animations img.lazyload,
+body.allow-image-animations img.lazyloading {
+  background-image   : var(---icon-loader);
+  background-size    : 64px auto;
+  background-repeat  : no-repeat;
+  background-position: 50%;
+}
+
+body.allow-image-animations img.lazyloaded {
+  background: none;
+}
+
+body.allow-image-animations img.logo__image {
+  -webkit-animation: none;
+  animation        : none;
+}
+
+body.allow-image-animations .slide-background {
+  opacity: 0.35;
+}
+
+body.allow-image-animations .slide-background--placeholder,
+body.allow-image-animations .slide-background.lazyloaded {
+  -webkit-animation: none;
+  animation        : none;
+  transition       : opacity 0.65s ease;
+  opacity          : 1;
+}
+
+body.allow-image-animations [data-animation="moFadeIn"].will-animate {
+  opacity: 0;
+}
+
+body.allow-image-animations [data-animation="moFadeIn"].animated {
+  -webkit-animation-name: moFadeIn;
+  animation-name        : moFadeIn;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -67,26 +248,95 @@ html {
 /* -------------------------------------------------------------------------- */
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .hidden {
-    display: none !important;
+  display: none !important;
 }
-  
+
 .visually-hidden {
-    position: absolute !important;
-    overflow: hidden;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-    clip: rect(0 0 0 0);
-    word-wrap: normal !important;
+  position : absolute !important;
+  overflow : hidden;
+  width    : 1px;
+  height   : 1px;
+  margin   : -1px;
+  padding  : 0;
+  border   : 0;
+  clip     : rect(0 0 0 0);
+  word-wrap: normal !important;
 }
 
 .visually-hidden--inline {
-    margin: 0;
-    height: 1em;
+  margin: 0;
+  height: 1em;
+}
+
+.form__label {
+  display      : block;
+  margin-bottom: 0.6rem;
+  color        : var(--color-black);
+}
+
+ /* -------------------------------------------------------------------------- */
+ /*                             component-quantity                             */
+ /* -------------------------------------------------------------------------- */
+.quantity {
+  border  : 1px solid var(--color-black);
+  color   : var(--color-black);
+  position: relative;
+  height  : 4.5rem;
+  display : flex;
+  width   : 140px;
+}
+
+.quantity__input {
+  color             : currentColor;
+  font-size         : 1.4rem;
+  font-weight       : 500;
+  opacity           : 0.85;
+  text-align        : center;
+  background-color  : transparent;
+  border            : 0;
+  padding           : 0 0.5rem;
+  width             : 100%;
+  flex-grow         : 1;
+  -webkit-appearance: none;
+  appearance        : none;
+}
+
+.quantity__button {
+  width           : 45px;
+  flex-shrink     : 0;
+  font-size       : 1.8rem;
+  border          : 0;
+  background-color: transparent;
+  cursor          : pointer;
+  display         : flex;
+  align-items     : center;
+  justify-content : center;
+  color           : rgb(var(--color-black));
+  padding         : 0;
+}
+
+.quantity__button svg {
+  width         : 1rem;
+  pointer-events: none;
+}
+
+.quantity__input:-webkit-autofill,
+.quantity__input:-webkit-autofill:hover,
+.quantity__input:-webkit-autofill:active {
+  box-shadow        : 0 0 0 10rem rgb(18, 18, 18) inset !important;
+  -webkit-box-shadow: 0 0 0 10rem rgb(18, 18, 18) inset !important;
+}
+
+.quantity__input::-webkit-outer-spin-button,
+.quantity__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin            : 0;
+}
+
+.quantity__input[type='number'] {
+  -moz-appearance: textfield;
 }

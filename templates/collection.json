@@ -1,15 +1,14 @@
 {
-    "sections": {
-      "banner": {
-        "type": "main-collection-banner"
-      },
-      "product-list": {
-        "type": "main-collection-product-list"
-      }
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner"
     },
-    "order": [
-      "banner",
-      "product-list"
-    ]
-  }
-  
+    "product-list": {
+      "type": "main-collection-product-list-own"
+    }
+  },
+  "order": [
+    "banner",
+    "product-list"
+  ]
+}
