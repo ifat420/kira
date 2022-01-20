@@ -1,11 +1,33 @@
 {
-    "sections": {
-      "hero": {
-        "type": "hero"
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
       }
-    
     },
-    "order": [
-      "hero"      
-    ]
+    "164268291930ad461c": {
+      "type": "feature-article",
+      "settings": {
+        "blog": "news",
+        "btn-text": "View all articles",
+        "btn-link": ""
+      }
+    },
+    "1642682923b0ef1557": {
+      "type": "feature-single-collection",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Le-grand-sac-blue---featured_1500x_79103bd6-1537-4535-ac6e-6380bed89e49.jpg",
+        "link": "",
+        "text-1": "Working with",
+        "text-2": "Le Grand Sac",
+        "btn-text": "Discover",
+        "btn-link": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "164268291930ad461c",
+    "1642682923b0ef1557"
+  ]
 }
