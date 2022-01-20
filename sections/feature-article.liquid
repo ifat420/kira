@@ -1,0 +1,58 @@
+{{ 'feature-article.css' | asset_url | stylesheet_tag }}
+
+<div class="page-width">
+  <div class="article">
+    {% assign blog = blogs[section.settings.blog] %}
+
+    {% for article in blog.articles limit:3 %}
+      <div class="article-col">
+        <a href="{{ article.url }}" class="article-link">
+          {% render 'image-as-background', imageUrl: article.image, className: 'img art-img' %}
+        </a>
+        <div class="article-content">
+          <h4 class="artcle-tag">{{ article.tags }}</h4>
+          <h2 class="article-title"><a href="{{ article.url }}" class="text-link">{{ article.title }}</a></h2>
+          <p class="article-excerpt">{{ article.excerpt | strip_html | truncatewords: 20 }} </p>
+          <a href="{{ article.url }}" class=" btn-link">Read more</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="article-button">
+    <a href="{{ section.settings.btn-link }}" class="btn btn-article">{{ section.settings.btn-text }}</a>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "feature article",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "blog"
+    },
+
+    {
+     "type": "text",
+     "id": "btn-text",
+     "label": "button text",
+     "default": "View all articles"
+    },
+
+    {
+     "type": "url",
+     "id": "btn-link",
+     "label": "button link"
+    }
+  ],
+
+  "presets": [
+    {
+      "name":"feature article"
+    }
+  ]
+}
+{% endschema %}
