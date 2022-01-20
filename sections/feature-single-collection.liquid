@@ -1,0 +1,73 @@
+{{ 'feature-s-collection.css' | asset_url | stylesheet_tag }}
+
+<div class="s-collection">
+  <a href="{{ section.settings.link }}" class="collection-link">
+    {% render 'image-as-background', imageUrl: section.settings.image, className: 'img s-collection-img' %}
+  </a>
+  <div class="scontent">
+    <div class="page-width">
+      <h4 class="sub-title">{{ section.settings.text-1 }}</h4>
+      <h2 class="m-title">{{ section.settings.text-2 }}</h2>
+      <div class="scollection-button">
+        <a href="{{ section.settings.btn-link }}" class="btn btn-scollection">{{ section.settings.btn-text }}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% schema %}
+  {
+    "name": "single collection",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "image"
+      },
+
+      {
+        "type": "url",
+        "id": "link",
+        "label": "collection link"
+      },
+
+      {
+        "type": "text",
+        "id": "text-1",
+        "label": "sub title",
+        "default": "Working with"
+      },
+
+      {
+        "type": "text",
+        "id": "text-2",
+        "label": "title",
+        "default": "Le Grand Sac"
+      },
+
+      {
+        "type": "text",
+        "id": "btn-text",
+        "label": "button text",
+        "default": "Discover"
+      },
+
+      {
+        "type": "url",
+        "id": "btn-link",
+        "label": "button link" 
+      }
+    ],
+
+  "presets": [
+    {
+      "name": "featured single collection"
+    }
+  ]
+
+  }
+{% endschema %}
