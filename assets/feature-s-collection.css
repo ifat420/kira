@@ -1,0 +1,106 @@
+.s-collection {
+  position: relative;
+  margin: 4rem 0;
+}
+
+.s-collection-img {
+  padding-bottom: 30%;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.scontent {
+  position: absolute;
+  bottom: 4rem;
+  left: 3rem;
+  width: 100%;
+}
+
+.sub-title {
+  color: #ffffff;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.m-title {
+  color: #ffffff;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 14px 28px;
+  line-height: normal;
+  border: 1px solid transparent;
+  border-radius: 0;
+  text-transform: uppercase;
+  text-align: center;
+  transition: color .45s cubic-bezier(.785, .135, .15, .86), border .45s cubic-bezier(.785, .135, .15, .86);
+  z-index: 1;
+  text-decoration: none;
+}
+
+.btn::before {
+  position: absolute;
+  content: "";
+  display: block;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1, 1);
+  transform-origin: left center;
+  z-index: -1;
+}
+
+.scontent .btn-scollection {
+  color: var(--color-secondary);
+  border-color: var(--color-white);
+}
+
+.scontent .btn-scollection::before {
+  background-color: var(--color-white);
+  transition: transform .45s cubic-bezier(.785, .135, .15, .86);
+}
+
+.scontent .btn-scollection:hover {
+  color: var(--color-white);
+  background-color: transparent;
+}
+
+.btn:hover:before {
+  transform: scale(0, 1);
+  transform-origin: right center;
+
+}
+
+@media screen and (max-width: 960px) {
+  .sub-title, .m-title {
+    margin-bottom: 1.2rem;
+  }
+  .s-collection-img {
+    padding-bottom: 40%;
+  }
+  
+}
+
+@media screen and (max-width: 560px) {
+  .s-collection-img {
+    padding-bottom: 90%;
+  }
+
+  .scontent {
+    position: absolute;
+    top: 64%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+  }
+}
