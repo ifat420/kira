@@ -1,6 +1,7 @@
 .s-collection {
   position: relative;
   margin: 4rem 0;
+  overflow: hidden;
 }
 
 .s-collection-img {
@@ -10,12 +11,19 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  transform: scale(1);
+  transition: opacity .3s ease, transform 8s cubic-bezier(.25, .46, .45, .94);
+  overflow: hidden;
+}
+
+.collection-link:hover .s-collection-img {
+  transform: scale(1.2);
+  overflow: hidden;
 }
 
 .scontent {
   position: absolute;
   bottom: 4rem;
-  left: 3rem;
   width: 100%;
 }
 
@@ -81,6 +89,8 @@
 
 }
 
+
+
 @media screen and (max-width: 960px) {
   .sub-title, .m-title {
     margin-bottom: 1.2rem;
@@ -88,7 +98,7 @@
   .s-collection-img {
     padding-bottom: 40%;
   }
-  
+
 }
 
 @media screen and (max-width: 560px) {
@@ -102,5 +112,10 @@
     left: 50%;
     transform: translate(-50%,-50%);
     text-align: center;
+    width: 100%;
+  }
+
+  .btn {
+    font-size: 14px;
   }
 }

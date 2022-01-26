@@ -1,0 +1,41 @@
+.couple {
+    position: relative;
+    margin: 4rem 0;
+}
+
+.text-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 400px;
+}
+
+.couple-img {
+    padding-bottom: 32%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    object-fit: cover;
+}
+
+.text-content >*{
+    color: #fff;
+}
+
+.m-title {
+    margin-top: 1.5rem;
+}
+
+.sub-title {
+    letter-spacing: 0.3rem;
+    font-size:1.2rem;
+}
+
+@media screen and (max-width:768px) {
+    .couple-img{
+      padding-bottom:38%;
+    }
+}

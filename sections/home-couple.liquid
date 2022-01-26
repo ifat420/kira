@@ -1,0 +1,54 @@
+{{ 'home-couple.css' | asset_url | stylesheet_tag }}
+
+<div class="couple">
+	<div class="cimage">
+		{% render 'image-as-background', imageUrl: section.settings.image, className: 'img couple-img' %}
+	</div>
+	<div class="text-content">
+		<h4 class="sub-title">{{ section.settings.sub-title }}</h4>
+		<h2 class="m-title">{{ section.settings.title }}</h2>
+		<p class="m-text">{{ section.settings.text }}</p>
+	</div>
+</div>
+
+{% schema %}
+	{
+		"name": "home couple",
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "image",
+				"label": "image"
+			},
+
+			{
+				"type": "text",
+				"id": "sub-title",
+				"label": "Sub Title",
+				"default": "THE COUPLE"
+			},
+
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Title",
+				"default": "LÉO ET VIOLETTE"
+			},
+
+			{
+				"type": "textarea",
+				"id": "text",
+				"label": "text",
+				"default": "We aspire to be a brand of the 21st century: 100% online and without any intermediary. From you to us directly."
+			}
+		],
+
+		"presets": [
+			{
+				"name": "home couple"
+			}
+		]
+
+
+	}
+{% endschema %}
