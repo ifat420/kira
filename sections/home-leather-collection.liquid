@@ -2,69 +2,69 @@
 
 <div class="l-colection">
 
-    <a href="{{ section.settings.link }}" class="lcollection-link">
-        {% render 'image-as-background', imageUrl: section.settings.image, className: 'img l-collection-img' %}
-    </a>
-    <div class="lcontent">
-        <h4 class="sub-title">{{ section.settings.text1 }}</h4>
-        <p class="m-text">{{ section.settings.text2 }}</p>
-        <div class="lcollection-button">
-        <a href="{{ section.settings.btn-link }}" class="btn-link">{{ section.settings.button-text }}</a>
-        </div>
-    </div>
+	<a href="{{ section.settings.link }}" class="lcollection-link">
+		{% render 'image-as-background', imageUrl: section.settings.image, className: 'img l-collection-img' %}
+	</a>
+	<div class="lcontent">
+		<h4 class="sub-title">{{ section.settings.text1 }}</h4>
+		<p class="m-text">{{ section.settings.text2 }}</p>
+		<div class="lcollection-button">
+			<a href="{{ section.settings.btn-link }}" class="btn-link">{{ section.settings.button-text }}</a>
+		</div>
+	</div>
 
 </div>
 
 
 {% schema %}
-  {
-    "name": "discover leather",
-    "settings": [
-        {
-            "type": "image_picker",
-            "id": "image",
-            "label": "image"
-        },
+	{
+		"name": "discover leather",
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "image",
+				"label": "image"
+			},
 
-        {
-            "type": "url",
-            "id": "link",
-            "label": "collection link"
-        },
+			{
+				"type": "url",
+				"id": "link",
+				"label": "collection link"
+			},
 
-        {
-            "type": "text",
-            "id": "text1",
-            "label": "sub title",
-            "default": "Leather"
-        },
+			{
+				"type": "text",
+				"id": "text1",
+				"label": "sub title",
+				"default": "Leather"
+			},
 
-        {
-            "type": "text",
-            "id": "text2",
-            "label": "title",
-            "default": "We only work with the best leather, chosen in collaboration with our factory. Made in Italy."
-        },
+			{
+				"type": "text",
+				"id": "text2",
+				"label": "title",
+				"default": "We only work with the best leather, chosen in collaboration with our factory. Made in Italy."
+			},
 
-        {
-           "type": "text",
-           "id": "button-text",
-           "label": "button text",
-           "default": "Discover Our Leather"
-        },
+			{
+				"type": "text",
+				"id": "button-text",
+				"label": "button text",
+				"default": "Discover Our Leather"
+			},
 
-        {
-            "type": "url",
-            "id": "btn-link",
-            "label": "button link" 
-        }
-    ],
+			{
+				"type": "url",
+				"id": "btn-link",
+				"label": "button link"
+			}
+			],
 
-  "presets": [
-    {
-      "name": "discover leather"
-    }
-  ]
+		"presets": [
+			{
+				"name": "discover leather"
+			}
+		]
 
-  }
+	}
 {% endschema %}

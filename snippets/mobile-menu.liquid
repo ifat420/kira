@@ -1,0 +1,96 @@
+<div class="drawer">
+	<div class="mmb">
+		<div class="menu-close">{% render 'icon-cross' %}</div>
+	
+		<div class="drawer-body">
+	
+			<div class="mobilemenu">
+				<ul class="mobilemenu__list">
+					{% assign menu = linklists[section.settings.main_menu2].links %}
+	
+					{% for link in menu %}
+	
+						{% if link.links == blank %}
+							<li class="mobilemenu__list__item">
+								<a class="mobilemenu__list__link" href="{{ link.url }}">
+									<span> {{ link.title }} </span>
+								</a>
+							</li>
+						{% endif %}
+	
+						{% if link.links != blank %}
+	
+							<li class="mobilemenu__list__item mobile__list__item-h" id="id-{{ forloop.index }}"
+								data-subclass="msub-{{ forloop.index }}" data-icon="micon-{{ forloop.index }}"
+								data-sub="{{ link.links.size }}">
+								<a class="mobilemenu__list__link">
+									<span id="micon-{{ forloop.index }}" class="mn-toggle-btn ">
+									</span>
+									{{link.title}}
+								</a>
+	
+								<ul id="msub-{{ forloop.index }}" class="mobslist">
+									{% for child in link.links %}
+									<li class="mobslist__item">
+										<a class="mobslist__link" href="{{ child.url }}"> {{ child.title }} </a>
+									</li>
+									{% endfor %}
+								</ul>
+	
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+	
+			<div class="drawer-footer">
+	
+				<ul class="icon-list">
+	
+					{% if section.settings.facebook != blank %}
+						<li class="social-list-item">
+							<a href="{{ section.settings.facebook }}">
+									{% render 'icon-facebook' %}
+							</a>
+						</li>
+					{% endif %}
+	
+					{% if section.settings.instagram != blank %}
+						<li class="social-list-item">
+							<a href="{{ section.settings.instagram }}">
+									{% render 'icon-instagram' %}
+							</a>
+						</li>
+					{% endif %}
+	
+					{% if section.settings.twitter != blank %}
+						<li class="social-list-item">
+							<a href="{{ section.settings.twitter}}">
+									{% render 'icon-twitter' %}
+							</a>
+						</li>
+					{% endif %}
+	
+					{% if section.settings.pintrest != blank %}
+						<li class="social-list-item">
+							<a href="{{ section.settings.pintrest}}">
+									{% render 'icon-pintrest' %}
+							</a>
+						</li>
+					{% endif %}
+	
+					{% if section.settings.vimeo != blank %}
+						<li class="social-list-item">
+							<a href="{{ section.settings.vimeo }}">
+									{% render 'icon-vimeo' %}
+							</a>
+						</li>
+					{% endif %}
+	
+	
+				</ul>
+	
+			</div>
+		</div>
+	</div>
+</div>
