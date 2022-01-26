@@ -1,4 +1,5 @@
 {{ 'header.scss.css' | asset_url | stylesheet_tag }}
+{{ 'header-sidebar.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
     assign totalnav = linklists.main-menu.links.size 
@@ -12,6 +13,12 @@
 
 <header>
     <nav class="page-width nav">
+
+        <div class="mobile-menu">
+            <div class="menu-m"> {% render 'icon-menu' %}</div>
+            {% render 'mobile-menu' %}
+        </div>
+
         <ul class="nav-list">
             {% assign menu = linklists[section.settings.main_menu].links %}
             {% for link in menu %} 
@@ -48,6 +55,8 @@
     </nav>
 </header>
 
+<script src="{{ 'sidebar.js' | asset_url }}"></script>
+
 {% schema %}
 {
     "name": "Header",
@@ -58,10 +67,48 @@
             "label": "Main Menu",
             "default": "main-menu"
         },
+
+        {
+            "type": "link_list",
+            "id": "main_menu2",
+            "label": "Sidebar Menu",
+            "default": "main-menu"
+        },
+
         {
             "type": "image_picker",
             "id": "logo",
             "label": "Logo"
+        },
+
+        {
+           "type": "url",
+           "id": "facebook",
+           "label": "facebook url"
+        },
+
+        {
+            "type": "url",
+            "id": "instagram",
+            "label": "instagram url"
+        },
+
+        {
+            "type": "url",
+            "id": "twitter",
+            "label": "twitter url"
+        },
+
+        {
+            "type": "url",
+            "id": "pintrest",
+            "label": "pintrest url"
+        },
+
+        {
+            "type": "url",
+            "id": "vimeo",
+            "label": "vimeo url"
         }
     ]
 }
