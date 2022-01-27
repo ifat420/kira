@@ -341,3 +341,36 @@ body.allow-image-animations [data-animation="moFadeIn"].animated {
 .quantity__input[type='number'] {
   -moz-appearance: textfield;
 }
+
+.bodyFixed {
+  height: 100vh;
+  overflow: hidden;
+}
+
+input:focus{
+  outline: none;
+  border-color: #1c1b1b;
+}
+
+.shopify-challenge__button {
+  background-color: #1c1b1b;
+  padding: 14px 30px;
+  color:#fff;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  border: 1px solid #1c1b1b;
+  transition:all 0.3s ease;
+  cursor: pointer;
+}
+
+.shopify-challenge__button:hover {
+  color:#1c1b1b;
+  background:transparent;
+  border: 1px solid #1c1b1b;
+}
+
+button {
+  appearance: none;
+  background: transparent;
+  border: none;
+}

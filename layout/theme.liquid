@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Nunito+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800&family=Nunito:wght@200;400;500;600;700&display=swap" rel="stylesheet">
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: '32x32' }}">
@@ -66,6 +67,7 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'lazy-bgset.js' | asset_url | script_tag }}
     {{ 'lazy.js' | asset_url | script_tag }}
+   
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     if (Shopify.designMode) {
@@ -74,7 +76,7 @@
     </script>
   </head>
 
-  <body class="allow-image-animations">
+  <body class="allow-image-animations" id="body">
     {%- comment -%}
       <a class="skip-to-content-link button visually-hidden" href="#MainContent">
         {{ "accessibility.skip_to_text" | t }}

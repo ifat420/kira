@@ -112,7 +112,7 @@
   background-color: transparent;
 }
 
-.btn:hover:before {
+.btn:hover::before {
   transform: scale(0, 1);
   transform-origin: right center;
 

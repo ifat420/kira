@@ -2,14 +2,16 @@ let sidebar = document.querySelector('.drawer');
 let menubutton = document.querySelector('.menu-m');
 let closebutton = document.querySelector('.menu-close');
 let navItems = document.querySelectorAll('.mobile__list__item-h');
-
+let htmlBody = document.getElementById('body');
 
 menubutton.addEventListener('click', function(e) {
     sidebar.classList.toggle('open');
+    htmlBody.classList.add('bodyFixed');
 });
 
 closebutton.addEventListener('click', function(e) {
     sidebar.classList.toggle('open');
+    htmlBody.classList.remove('bodyFixed');
 });
 
 

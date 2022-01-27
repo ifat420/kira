@@ -1,1 +1,268 @@
-<h1> Footer </h1>
+{{ 'footer.css' | asset_url | stylesheet_tag }}
+
+<div class="footer">
+	<div class="page-width">
+		<div class="footer-content">
+
+			<div class="footer-col">
+				<h3 class="footer-title">{{ section.settings.text-1 }}</h3>
+				<div class="footer-text">{{ section.settings.textarea}}</div>
+
+				<div class="footer-social">
+					<ul class="icon-list">
+						{% if section.settings.facebook != blank %}
+							<li class="social-list-item">
+								<a href="{{ section.settings.facebook }}">
+										{% render 'icon-facebook' %}
+								</a>
+							</li>
+						{% endif %}
+						{% if section.settings.instagram != blank %}
+							<li class="social-list-item">
+								<a href="{{ section.settings.instagram }}">
+										{% render 'icon-instagram' %}
+								</a>
+							</li>
+						{% endif %}
+						{% if section.settings.twitter != blank %}
+							<li class="social-list-item">
+								<a href="{{ section.settings.twitter}}">
+										{% render 'icon-twitter' %}
+								</a>
+							</li>
+						{% endif %}
+						{% if section.settings.pintrest != blank %}
+							<li class="social-list-item">
+								<a href="{{ section.settings.pintrest}}">
+										{% render 'icon-pintrest' %}
+								</a>
+							</li>
+						{% endif %}
+						{% if section.settings.vimeo != blank %}
+							<li class="social-list-item">
+								<a href="{{ section.settings.vimeo }}">
+										{% render 'icon-vimeo' %}
+								</a>
+							</li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+
+			<div class="footer-mid-col">
+				<h3 class="footer-title">{{ section.settings.text-2 }}</h3>
+				<ul class="footer-list">
+						{% for link in linklists[section.settings.linklist-1].links %}
+								{% if link.links == blank %}
+								<li class="footer-nav-item">
+										<a class="footer-nav-link" href="{{link.url}}">{{link.title}}</a>
+								</li>
+								{% endif %}
+						{% endfor %}
+				</ul>
+			</div>
+
+			
+			<div class="footer-col">
+				<h3 class="footer-title">{{ section.settings.text-3 }}</h3>
+				<ul class="footer-list">
+						{% for link in linklists[section.settings.linklist-2].links %}
+								{% if link.links == blank %}
+								<li class="footer-nav-item">
+								<a class="footer-nav-link" href="{{link.url}}">{{link.title}}</a>
+								</li>
+								{% endif %}
+
+						{% endfor %}
+				</ul>
+			</div>
+
+
+			<div class="footer-col footer-col-l" >
+
+				<h3 class="footer-title">{{ section.settings.text-3 }}</h3>
+				<div class="footer-text">{{ section.settings.textarea-2 }}</div>
+
+				<div class="contact-form col-md-6 ">
+					{% form 'contact' %}
+						{% if form.posted_successfully? %}
+								<p class="note form-success">
+								Thank you for contacting us!
+								</p>
+						{% endif %}
+		
+
+						<div class="field field--with-error form-field">
+								<input
+									autocomplete="email"
+									type="email"
+									id="ContactForm-email"
+									class="field__input input-text"
+									name="contact[email]"
+									spellcheck="false"
+									autocapitalize="off"
+									value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+									aria-required="true"
+									{% if form.errors contains 'email' %}
+									aria-invalid="true"
+									aria-describedby="ContactForm-email-error"
+									{% endif %}
+									placeholder="Enter your email address"
+						
+								>
+						
+								{%- if form.errors contains 'email' -%}
+										<small class="contact__field-error" id="ContactForm-email-error">
+										<span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+										<span class="form__message">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</span>
+										</small>
+								{%- endif -%}
+						</div>
+	
+						<div class="footer-button">
+							<button type="submit" class="btn btn-article btn-submit">
+								submit
+							</button>
+						</div>
+					{% endform %}
+
+				</div>
+			</div>
+
+		</div>
+		<div class="footer-last">
+			<div class="foot-text-content">
+				<a class="text-foot" href="{{ section.settings.link-url }}">{{ section.settings.link-text }}</a>
+				<a class="text-foot" href="{{ section.settings.link-url2 }}">{{ section.settings.link-text2 }}</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+{% schema %}
+	{
+		"name": "footer",
+		"settings": [
+
+			{
+				"type": "text",
+				"id": "text-1",
+				"label": "title 1",
+				"default": "ABOUT THE SHOP"
+
+			},
+
+			{
+				"type": "richtext",
+				"id": "textarea",
+				"label": "about store text"
+			},
+
+			{
+				"type": "url",
+				"id": "facebook",
+				"label": "facebook url"
+		 	},
+
+			{
+				"type": "url",
+				"id": "instagram",
+				"label": "instagram url"
+			},
+
+			{
+				"type": "url",
+				"id": "twitter",
+				"label": "twitter url"
+			},
+
+			{
+				"type": "url",
+				"id": "pintrest",
+				"label": "pintrest url"
+			},
+
+			{
+				"type": "url",
+				"id": "vimeo",
+				"label": "vimeo url"
+			},
+
+			{
+				"type": "text",
+				"id": "text-2",
+				"label": "title 2",
+				"default": "SHOP"
+	
+			},
+
+			{
+				"type": "link_list",
+				"id": "linklist-1",
+				"label": "Shop Menu",
+				"default": "main-menu"
+			},
+
+			{
+				"type": "text",
+				"id": "text-3",
+				"label": "title 3",
+				"default": "INFORMATION"
+	
+			},
+
+			{
+				"type": "link_list",
+				"id": "linklist-2",
+				"label": "Information Menu",
+				"default": "main-menu"
+			},
+
+			{
+				"type": "text",
+				"id": "text-4",
+				"label": "title 4",
+				"default": "NEWSLETTER"
+	
+			},
+
+			{
+				"type": "richtext",
+				"id": "textarea-2",
+				"label": "Newsletter text"
+			},
+			{
+				"type": "url",
+				"id": "link-url",
+				"label": "credit link"	
+			},
+			{
+				"type": "text",
+				"id": "link-text",
+				"label": "credit text",
+				"default": "© PRESTIGE - ALLURE"
+			},
+
+			{
+				"type": "url",
+				"id": "link-url2",
+				"label": "powerd by link"	
+			},
+
+			{
+				"type": "text",
+				"id": "link-text2",
+				"label": "powerd by text",
+				"default": "Powered by Shopify"
+			}
+
+		]
+
+
+	}
+{% endschema %}
